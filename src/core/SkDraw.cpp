@@ -37,7 +37,11 @@
 #include <cutils/log.h>
 
 #if defined(FIMG2D_ENABLED)
+#if defined(FIMG2D3X)
+#include "SkFimgApi3x.h"
+#elif defined(FIMG2D4X)
 #include "SkFimgApi4x.h"
+#endif
 Fimg fimg;
 SkMutex gG2DMutex;
 #endif
@@ -1344,7 +1348,10 @@ void SkDraw::drawBitmap(const SkBitmap& bitmap, const SkMatrix& prematrix,
                 fimg.clipL = cr.fLeft;
                 fimg.clipR = cr.fRight;
 
+#if defined(FIMG2D4X)
                 fimg.mskAddr        = NULL;
+#endif
+
                 fimg.rotate         = 0;
 
                 SkXfermode::Mode  mode;
@@ -1355,8 +1362,13 @@ void SkDraw::drawBitmap(const SkBitmap& bitmap, const SkMatrix& prematrix,
                 fimg.colorFilter = (int)paint.getColorFilter();
 
                 fimg.alpha = paint.getAlpha();
-                if (bitmap.isOpaque() && (255 == fimg.alpha))
+                if (bitmap.isOpaque() && (255 == fimg.alpha)) {
+#if defined(FIMG2D3X)
+                    fimg.alpha = 256;
+#elif defined(FIMG2D4X)
                     fimg.alpha = 255;
+#endif
+                }
 
                 if (fimg.srcAddr != NULL) {
                     int retFimg = FimgApiStretch(&fimg, __func__);
@@ -1426,7 +1438,10 @@ void SkDraw::drawBitmap(const SkBitmap& bitmap, const SkMatrix& prematrix,
         fimg.dstColorFormat = fBitmap->config();
         fimg.dstAddr        = (unsigned char *)fBitmap->getAddr(0,0);
 
+#if defined(FIMG2D4X)
         fimg.mskAddr        = NULL;
+#endif
+
         fimg.rotate         = 0;
 
         fimg.alpha = paint.getAlpha();
