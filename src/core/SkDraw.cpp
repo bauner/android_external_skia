@@ -2590,12 +2590,6 @@ void SkDraw::drawRect_withG2D(const SkRect& rect, const SkPaint& paint) const {
     matrix.mapXY(rect.fRight, rect.fBottom, rect_points(devRect, 1));
     devRect.sort();
 
-    if (fBounder && !fBounder->doRect(devRect, paint)) {
-        fimg.srcAddr = NULL;
-        gG2DMutex.release();
-        return;
-    }
-
     // look for the quick exit, before we build a blitter
     {
         SkIRect ir;
