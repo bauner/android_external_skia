@@ -585,16 +585,6 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := \
 	$(LOCAL_PATH)/include/utils \
 	$(LOCAL_PATH)/src/utils
 
-# for FIMG2D acceleration
-ifeq ($(BOARD_USES_FIMGAPI),true)
-ifeq ($(BOARD_USES_SKIA_FIMGAPI),true)
-LOCAL_CFLAGS += -DFIMG2D_ENABLED
-LOCAL_C_INCLUDES += $(TOP)/hardware/samsung/exynos4/hal/include
-LOCAL_SRC_FILES += src/core/SkFimgApi4x.cpp
-LOCAL_SHARED_LIBRARIES += libfimg
-endif
-endif
-
 LOCAL_MODULE := \
 	libskia
 
@@ -608,6 +598,7 @@ LOCAL_SRC_FILES_arm += \
 	src/opts/SkMorphology_opts_arm.cpp \
 	src/opts/SkUtils_opts_arm.cpp \
 	src/opts/SkXfermode_opts_arm.cpp
+
 
 ifeq ($(ARCH_ARM_HAVE_NEON), true)
 LOCAL_SRC_FILES_arm += \
