@@ -48,16 +48,16 @@
 
 //---------------------------------------------------------------------------//
 
-#define FIMGAPI_G2D_BLOCKING            true
-#define FIMGAPI_FILTERMODE_USE_SW       true
-#define FIMGAPI_DITHERMODE_USE_SW       true
-#define FIMGAPI_COMPROMISE_USE          true
-#define FIMGAPI_HYBRID_USE              false
+#define FIMGAPI_G2D_BLOCKING            TRUE
+#define FIMGAPI_FILTERMODE_USE_SW       TRUE
+#define FIMGAPI_DITHERMODE_USE_SW       TRUE
+#define FIMGAPI_COMPROMISE_USE          TRUE
+#define FIMGAPI_HYBRID_USE              FALSE
 
 #if defined(SWP1_CUSTOMSIMD_ENABLE)
-#define FIMGAPI_DMC_SIMD_OPT_USE        true
+#define FIMGAPI_DMC_SIMD_OPT_USE        TRUE
 #else
-#define FIMGAPI_DMC_SIMD_OPT_USE        false
+#define FIMGAPI_DMC_SIMD_OPT_USE        FALSE
 #endif
 
 #define FIMGAPI_FINISHED                (0x1<<0)

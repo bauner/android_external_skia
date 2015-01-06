@@ -213,6 +213,7 @@
       'core/SkTime.h',
       'core/SkPathMeasure.h',
       'core/SkMaskFilter.h',
+      'core/SkBounder.h',
       'core/SkFlate.h',
       'core/SkTDArray.h',
       'core/SkAnnotation.h',
