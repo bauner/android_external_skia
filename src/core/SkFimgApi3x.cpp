@@ -143,7 +143,7 @@ bool FimgApiCheckPossible(Fimg *fimg)
             return false;
 #endif
 
-    if (fimg->colorFilter != 0)
+    if (fimg->colorFilter != NULL)
         return false;
 
     if ((fimg->srcAddr == NULL) || (fimg->dstAddr == NULL))
