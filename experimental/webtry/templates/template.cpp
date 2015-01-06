@@ -19,7 +19,6 @@
 #include "SkBlurImageFilter.h"
 #include "SkBlurMaskFilter.h"
 #include "SkBlurTypes.h"
-#include "SkBounder.h"
 #include "SkCanvas.h"
 #include "SkChecksum.h"
 #include "SkChunkAlloc.h"

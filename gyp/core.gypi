@@ -228,7 +228,6 @@
         '<(skia_include_path)/core/SkBitmap.h',
         '<(skia_include_path)/core/SkBitmapDevice.h',
         '<(skia_include_path)/core/SkBlitRow.h',
-        '<(skia_include_path)/core/SkBounder.h',
         '<(skia_include_path)/core/SkCanvas.h',
         '<(skia_include_path)/core/SkChecksum.h',
         '<(skia_include_path)/core/SkChunkAlloc.h',

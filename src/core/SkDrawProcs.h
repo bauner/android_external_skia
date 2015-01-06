@@ -17,7 +17,6 @@ class SkBlitter;
 
 struct SkDraw1Glyph {
     const SkDraw* fDraw;
-    SkBounder* fBounder;
     const SkRegion* fClip;
     const SkAAClip* fAAClip;
     SkBlitter* fBlitter;

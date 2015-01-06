@@ -10,8 +10,8 @@
 
 #include "SkOperand.h"
 #include "SkIntArray.h"
-#include "SkBounder.h"
 #include "SkRect.h"
+#include "SkRefCnt.h"
 
 class SkAnimateMaker;
 class SkActive;
@@ -19,7 +19,7 @@ class SkApply;
 class SkDrawable;
 class SkGroup;
 
-class SkDisplayList : public SkBounder {
+class SkDisplayList : public SkRefCnt {
 public:
     SkDisplayList();
     virtual ~SkDisplayList();

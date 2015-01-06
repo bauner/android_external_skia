@@ -2162,14 +2162,6 @@ bool SampleView::onEvent(const SkEvent& evt) {
         return true;
     }
 
-    if (evt.isType("debug-hit-test")) {
-        fDebugHitTest = true;
-        evt.findS32("debug-hit-test-x", &fDebugHitTestLoc.fX);
-        evt.findS32("debug-hit-test-y", &fDebugHitTestLoc.fY);
-        this->inval(NULL);
-        return true;
-    }
-
     return this->INHERITED::onEvent(evt);
 }
 
@@ -2277,45 +2269,13 @@ void SampleView::draw(SkCanvas* canvas) {
     }
 }
 
-#include "SkBounder.h"
-
-class DebugHitTestBounder : public SkBounder {
-public:
-    DebugHitTestBounder(int x, int y) {
-        fLoc.set(x, y);
-    }
-
-    virtual bool onIRect(const SkIRect& bounds) SK_OVERRIDE {
-        if (bounds.contains(fLoc.x(), fLoc.y())) {
-            //
-            // Set a break-point here to see what was being drawn under
-            // the click point (just needed a line of code to stop the debugger)
-            //
-            bounds.centerX();
-        }
-        return true;
-    }
-
-private:
-    SkIPoint fLoc;
-    typedef SkBounder INHERITED;
-};
-
 void SampleView::onDraw(SkCanvas* canvas) {
     this->onDrawBackground(canvas);
-
-    DebugHitTestBounder bounder(fDebugHitTestLoc.x(), fDebugHitTestLoc.y());
-    if (fDebugHitTest) {
-        canvas->setBounder(&bounder);
-    }
 
     for (int i = 0; i < fRepeatCount; i++) {
         SkAutoCanvasRestore acr(canvas, true);
         this->onDrawContent(canvas);
     }
-
-    fDebugHitTest = false;
-    canvas->setBounder(NULL);
 }
 
 void SampleView::onDrawBackground(SkCanvas* canvas) {
