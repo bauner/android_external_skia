@@ -44,7 +44,7 @@
 #include <sys/poll.h>
 #include <sys/stat.h>
 
-#include <linux/android_pmem.h>
+//#include <linux/android_pmem.h>
 
 //---------------------------------------------------------------------------//
 
